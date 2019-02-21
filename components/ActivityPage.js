@@ -94,7 +94,6 @@ class ActivityPage extends React.Component{
 const styles = {
     viewStyle: {
         flex: 1,
-        alignItems: 'center',
         borderColor: "red",
         borderWidth: 2,
     },
@@ -104,15 +103,16 @@ const styles = {
         borderWidth: 2,
         justifyContent: 'flex-end',
         backgroundColor: '#FFF',
-        marginBottom: 10
     },
     propsButtonStyle: {
         backgroundColor: '#F8F8F8',
-        borderWidth: 1,
+        borderWidth: 2,
         borderRadius: 5,
         borderColor: "purple",
         marginLeft: 5,
         marginRight: 5,
+        marginBottom: 5,
+        marginTop: 5
         
     },
     propsLabelStyle: {

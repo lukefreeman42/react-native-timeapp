@@ -33,14 +33,19 @@ class ActivityForm extends React.Component{
         return(
             <View style = {styles.viewStyle}>
                         <Input
-                            label = "this" 
+                            label = "What do you spend your time on?"
+                            labelStyle = {styles.propsLabelStyle}
+                            inputStyle = {styles.propsInputStyle} 
                             viewStyle = {styles.propsViewStyle}
                             placeholder = "activity"
                             onChangeText = {activity => this.setState({activity})}
                             value = {this.state.activity}
                         />
+                        <View style = {styles.propsViewStyle4}>
+                        <Text style = {styles.propsLabelStyle2}> How much time? </Text>
+                        </View>
+                        <View style = {styles.propsViewStyle3}>
                         <Input 
-                            label = "that"
                             inputStyle = {styles.propsInputStyle}
                             viewStyle = {styles.propsViewStyle}
                             placeholder = "hours"
@@ -48,13 +53,16 @@ class ActivityForm extends React.Component{
                             value = {this.state.hours}
                         />
                         <Input 
+                            inputStyle = {styles.propsInputStyle}
                             viewStyle = {styles.propsViewStyle}
                             placeholder = "minutes"
                             onChangeText = {minutes => this.setState({minutes})}
                             value = {this.state.minutes}
                         />
+                        </View>
                         <Button
-                                viewStyle = {styles.propsViewStyle} 
+                                labelStyle = {styles.propsLabelStyle3}
+                                viewStyle = {styles.propsViewStyle2} 
                                 buttonStyle = {styles.propsButtonStyle}
                                 onPress = {this.onFormSubmit}
                                 label = "submit"
@@ -77,45 +85,79 @@ class ActivityForm extends React.Component{
 const styles = {
     viewStyle:{
         flex: 1,
-        alignSelf: 'stretch',
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: '#000',
-        paddingTop: 20,
-        paddingBottom: 10,
-        shadowOffset: { width: 5, height: 5},
-        shadowOpacity: 0.5
     },
     propsInputStyle: {
+        flex: 1,
         borderColor: "black",
-        borderWidth: 2
+        borderWidth: 1,
+        marginRight: 5,
+        marginLeft: 5,
     },
     propsCardStyle: {
+        flex: 1,
         marginLeft: 5,
         marginRight: 5,
         marginTop: 5,
-        borderColor: "blue",
-        borderWidth: 2
+        marginBotton: 5,
+        borderColor: "black",
+        borderWidth: 3,
+        minHeight: 250,
+        maxHeight: 250,
+        paddingRight: 10,
+        paddingLeft: 10,
+        paddingTop: 10,
+        paddingBottom: 10
     },
     propsViewStyle: {
-        borderColor: "orange",
-        borderWidth: 2,
+        flex:4,
+        //borderColor: "orange",
+        //borderWidth: 2,
+    },
+    propsViewStyle2:{
+        flex:3,
+        justifyContent: 'flex-end',
+        //borderWidth: 2,
+        //borderColor: "red"
+    },
+    propsViewStyle3: {
+        flex:2,
+        flexDirection: 'row',
+        //borderColor: "green",
+        //borderWidth: 2,
+        paddingLeft: 40,
+        paddingRight: 40,
+    },
+    propsViewStyle4:{
+        flex:1.5,
         justifyContent: 'center',
         alignItems: 'center',
+        //borderWidth: 2,
+        //borderColor: "red"
     },
     propsLabelStyle:{
-        fontSize: 20
+        flex: 2,
+        alignItems: 'center',
+        fontSize: 24,
+        fontWeight: 'bold'
+    },
+    propsLabelStyle2:{
+        flex: 2,
+        alignItems: 'center',
+        fontSize: 22,
+        fontWeight:'bold'
+    },
+    propsLabelStyle3:{
+        fontSize:17
     },
     propsButtonStyle:{
-        backgroundColor: '#F8F8F8',
+        borderWidth: 1.4,
+        borderRadius: 5,
+        marginLeft: 100,
+        marginRight: 100,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'stretch',
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#007aff',
-        marginLeft: 5,
-        marginRight: 5,
+        borderColor: "black",
     }
 }
 
