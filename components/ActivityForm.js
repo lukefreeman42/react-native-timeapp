@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import Input from './common/Input';
 import Button from './common/Button';
 import Card from './common/Card';
@@ -31,57 +31,53 @@ class ActivityForm extends React.Component{
 
     activityForm = () => {
         return(
-            <Card>
-            <View style = {styles.viewStyle2}>
-                        <Input 
-                            viewStyle = {styles.viewStyle1}
-                            labelStyle = {styles.labelStyle}
-                            label = "What do you spend time on?"
+            <View style = {styles.viewStyle}>
+                        <Input
+                            label = "this" 
+                            viewStyle = {styles.propsViewStyle}
                             placeholder = "activity"
                             onChangeText = {activity => this.setState({activity})}
                             value = {this.state.activity}
                         />
                         <Input 
-                            viewStyle = {styles.viewStyle1}
-                            labelStyle = {styles.labelStyle}
+                            label = "that"
+                            inputStyle = {styles.propsInputStyle}
+                            viewStyle = {styles.propsViewStyle}
                             placeholder = "hours"
-                            label = "How many hours?"
                             onChangeText = {hours => this.setState({hours})}
                             value = {this.state.hours}
                         />
                         <Input 
-                            viewStyle = {styles.viewStyle1}
-                            labelStyle = {styles.labelStyle}
+                            viewStyle = {styles.propsViewStyle}
                             placeholder = "minutes"
-                            label = "How many minutes?"
                             onChangeText = {minutes => this.setState({minutes})}
                             value = {this.state.minutes}
                         />
-                        <Button 
-                                buttonStyle = {styles.buttonStyle}
+                        <Button
+                                viewStyle = {styles.propsViewStyle} 
+                                buttonStyle = {styles.propsButtonStyle}
                                 onPress = {this.onFormSubmit}
                                 label = "submit"
                         />
             </View>
-            </Card>
         );
     }
 
     render() {
         return (
-            <View>
+            <Card
+                cardStyle = {styles.propsCardStyle}
+            >
                 {this.activityForm()}
-            </View>
+            </Card>
         );
     }
 }
 
 const styles = {
-    viewStyle1: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    viewStyle2:{
+    viewStyle:{
+        flex: 1,
+        alignSelf: 'stretch',
         justifyContent: 'center',
         alignItems: 'center',
         shadowColor: '#000',
@@ -90,10 +86,27 @@ const styles = {
         shadowOffset: { width: 5, height: 5},
         shadowOpacity: 0.5
     },
-    labelStyle:{
+    propsInputStyle: {
+        borderColor: "black",
+        borderWidth: 2
+    },
+    propsCardStyle: {
+        marginLeft: 5,
+        marginRight: 5,
+        marginTop: 5,
+        borderColor: "blue",
+        borderWidth: 2
+    },
+    propsViewStyle: {
+        borderColor: "orange",
+        borderWidth: 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    propsLabelStyle:{
         fontSize: 20
     },
-    buttonStyle:{
+    propsButtonStyle:{
         backgroundColor: '#F8F8F8',
         justifyContent: 'center',
         alignItems: 'center',

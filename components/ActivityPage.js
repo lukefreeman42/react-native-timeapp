@@ -57,8 +57,10 @@ class ActivityPage extends React.Component{
                                 killCom = {this.killCom}
                     
                     />
-                    <Button 
-                            buttonStyle = {styles.buttonStyle}
+                    <Button
+                            viewStyle = {styles.propsViewStyle}
+                            buttonStyle = {styles.propsButtonStyle}
+                            labelStyle = {styles.propsLabelStyle}
                             onPress = {this.props.flipAdmin}
                             label = "save"
                     />
@@ -75,8 +77,10 @@ class ActivityPage extends React.Component{
                         admin = {this.props.admin}
                         killCom = {this.killCom} 
                     />
-                    <Button 
-                            buttonStyle = {styles.buttonStyle}
+                    <Button
+                            viewStyle = {styles.propsViewStyle} 
+                            buttonStyle = {styles.propsButtonStyle}
+                            labelStyle = {styles.propsLabelStyle}
                             onPress = {this.props.flipAdmin}
                             label = "edit"
                     />
@@ -91,20 +95,28 @@ const styles = {
     viewStyle: {
         flex: 1,
         alignItems: 'center',
-        backgroundColor: '#FFF'
+        borderColor: "red",
+        borderWidth: 2,
     },
-    buttonStyle: {
+    propsViewStyle:{
+        flex: 1,
+        borderColor: "green",
+        borderWidth: 2,
+        justifyContent: 'flex-end',
+        backgroundColor: '#FFF',
+        marginBottom: 10
+    },
+    propsButtonStyle: {
         backgroundColor: '#F8F8F8',
-        justifyContent: 'center',
-        alignItems: 'center',
-        alignSelf: 'stretch',
         borderWidth: 1,
         borderRadius: 5,
-        borderColor: '#007aff',
+        borderColor: "purple",
         marginLeft: 5,
         marginRight: 5,
-        justifyContent: 'flex-end',
-        marginBottom: 3
+        
     },
+    propsLabelStyle: {
+        fontSize: 30
+    }
 }
 export default ActivityPage
