@@ -62,13 +62,23 @@ startCountDown = () => {
         if (!this.props.admin)
         {
             return(
-                <View>
-                    <Button onPress = {this.startCountDown}
-                            label = {this.props.elem.activity}
+                <View style = {styles.viewStyle}>
+                    <View style = {styles.viewStyle3}>
+                        <Text style = {styles.textStyle4}> 
+                            {this.props.elem.activity}
+                        </Text>
+                    </View>
+                    <View style = {styles.viewStyle2}>
+                        <Text style = {styles.textStyle3}>
+                        {this.state.hours} : {this.state.minutes} : {this.state.seconds}
+                        </Text>
+                    </View>
+                    <Button buttonStyle = {styles.propsButtonStyle}
+                            labelStyle = {styles.propsLabelStyle}
+                            viewStyle = {styles.propsViewStyle}
+                            onPress = {this.startCountDown}
+                            label = "Start"
                     />
-                    <Text>
-                    {this.state.hours} : {this.state.minutes} : {this.state.seconds}
-                    </Text>
                 
                 </View>
             );
@@ -76,13 +86,73 @@ startCountDown = () => {
         else
         {
             return(
-                <View>
-                    <Text>
+                <View style = {styles.viewStyle}>
+                    <View style = {styles.viewStyle3}>
+                        <Text style = {styles.textStyle2}> 
+                            {this.props.elem.activity}
+                        </Text>
+                    </View>
+                    <View style = {styles.viewStyle2}>
+                        <Text style = {styles.textStyle}>
                         {this.state.hours} : {this.state.minutes} : {this.state.seconds}
-                    </Text>
+                        </Text>
+                    </View>
                 </View>
             );
         }
     }
+}
+
+const styles = {
+    viewStyle :{
+        flex: 5,
+        flexDirection: 'row',
+    },
+    textStyle:{
+        fontSize: 20,
+        fontWeight: 'bold',
+    },
+    textStyle2:{
+        fontSize: 25,
+        fontWeight: 'bold'
+    },
+    textStyle3:{
+        fontSize: 25,
+        fontWeight: 'bold',
+    },
+    textStyle4:{
+        fontSize: 30,
+        fontWeight: 'bold'
+    },
+    propsViewStyle:{
+        flex:1,
+        borderColor: "black",
+        borderWidth: 1,
+        justifyContent: 'center',
+    },
+    viewStyle2:{
+        flex:2.5,
+        borderColor: "black",
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    viewStyle3:{
+        flex:2.5,
+        borderColor: "black",
+        borderWidth: 1,
+        justifyContent: 'center'
+    }, 
+    propsButtonStyle:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        borderColor: "black",
+    },
+    propsLabelStyle:{
+        fontSize: 23,
+        fontWeight: 'bold'
+    },
 }
 export default Timer;

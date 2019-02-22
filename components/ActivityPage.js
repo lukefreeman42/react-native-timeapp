@@ -94,29 +94,29 @@ class ActivityPage extends React.Component{
 const styles = {
     viewStyle: {
         flex: 1,
-        borderColor: "red",
-        borderWidth: 2,
+        //borderColor: "red",
+        //borderWidth: 2,
     },
     propsViewStyle:{
         flex: 1,
-        borderColor: "green",
-        borderWidth: 2,
-        justifyContent: 'flex-end',
+        //borderColor: "green",
+        //borderWidth: 2,
+        justifyContent: 'center',
         backgroundColor: '#FFF',
+        minHeight: 30
     },
     propsButtonStyle: {
-        backgroundColor: '#F8F8F8',
-        borderWidth: 2,
+        borderWidth: 3,
         borderRadius: 5,
-        borderColor: "purple",
-        marginLeft: 5,
-        marginRight: 5,
-        marginBottom: 5,
-        marginTop: 5
-        
+        marginLeft: 100,
+        marginRight: 100,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'stretch',
+        borderColor: "black",
     },
     propsLabelStyle: {
-        fontSize: 30
+        fontSize: 20
     }
 }
 export default ActivityPage

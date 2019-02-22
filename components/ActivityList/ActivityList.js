@@ -6,19 +6,38 @@ import {View} from 'react-native';
 
 class ActivityList extends React.Component {
     render(){
-        return (
-            <View>
-                    {this.props.list.map((elem, key) => {
-                        return (<Activity key = {key}
-                                          elem = {elem}
-                                          admin = {this.props.admin}
-                                          killCom = {this.props.killCom}
-                                          delAct = {this.props.delAct}
-                                />
-                            );
-                    })}
-            </View>
-        );
+        if (this.props.admin)
+        {
+            return (
+                <View style = {styles.viewStyle}>
+                        {this.props.list.map((elem, key) => {
+                            return (<Activity key = {key}
+                                              elem = {elem}
+                                              admin = {this.props.admin}
+                                              killCom = {this.props.killCom}
+                                              delAct = {this.props.delAct}
+                                    />
+                                );
+                        })}
+                </View>
+            );
+        }
+        else
+        {
+            return (
+                <View style = {styles.viewStyle3}>
+                        {this.props.list.map((elem, key) => {
+                            return (<Activity key = {key}
+                                              elem = {elem}
+                                              admin = {this.props.admin}
+                                              killCom = {this.props.killCom}
+                                              delAct = {this.props.delAct}
+                                    />
+                                );
+                        })}
+                </View>
+            );
+        }
     }
 }
 
@@ -32,24 +51,26 @@ class Activity extends React.Component {
         if (this.props.admin)
         {
             return (
-              <Card>
+              <View style = {styles.viewStyle2}>
                   <Timer
                           elem = {this.props.elem}
                           admin = {this.props.admin}
                           killCom = {this.props.killCom}
                    />
                   <Button
-                        buttonStyle = {styles.buttonStyle}
+                          labelStyle = {styles.propsLabelStyle}
+                          buttonStyle = {styles.propsButtonStyle}
+                          viewStyle = {styles.propsViewStyle}
                           label = "delete"
                           onPress = {this.delAct}
                    />
-              </Card>
+              </View>
             )
         }
         else
         {
             return (
-                <View>
+                <View style = {styles.viewStyle4}>
                     <Timer
                           elem = {this.props.elem}
                           admin = {this.props.admin}
@@ -62,16 +83,51 @@ class Activity extends React.Component {
 }
 
 const styles = {
-    buttonStyle: {
-        backgroundColor: '#F8F8F8',
+    viewStyle: {
+        flex: 20,
+        borderColor: "red",
+        borderWidth: 1,
+        marginTop: 1,
+        marginRight: 15,
+        marginLeft: 15,
+    },
+    viewStyle2: {
+        flex:1,
+        flexDirection: 'row',
+       // borderColor: "red",
+       // borderWidth: 2,
+        maxHeight: 50,
+    },
+    viewStyle3: {
+        flex: 20,
+        borderColor: "red",
+        borderWidth: 1,
+        marginTop: 1,
+    },
+    viewStyle4: {
+        flex:1,
+        flexDirection: 'row',
+       // borderColor: "red",
+       // borderWidth: 2,
+        maxHeight: 80,
+    },
+    propsViewStyle: {
+        flex: 1,
+        borderColor:"black",
+        borderWidth: 1,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    propsButtonStyle:{
+        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'stretch',
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#007aff',
-        marginLeft: 5,
-        marginRight: 5,
-    }
+        borderColor: "black",
+    },
+    propsLabelStyle:{
+        fontSize: 17,
+        fontWeight: 'bold',
+    },
 }
 export default ActivityList;
