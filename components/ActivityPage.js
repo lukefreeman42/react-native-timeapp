@@ -82,7 +82,7 @@ class ActivityPage extends React.Component{
                             buttonStyle = {styles.propsButtonStyle}
                             labelStyle = {styles.propsLabelStyle}
                             onPress = {this.props.flipAdmin}
-                            label = "save"
+                            label = "Begin"
                     />
                 </View>
             );

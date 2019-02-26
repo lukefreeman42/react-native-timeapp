@@ -1,5 +1,6 @@
 import React from 'react'
 import {View, Text} from 'react-native'
+import BackgroundTimer from 'react-native-background-timer'
 import Button from '../../common/Button'
 
 class Timer extends React.Component{
@@ -45,18 +46,29 @@ class Timer extends React.Component{
         })
         this.formatting(hr, min, sec);
         if (!this.state.on) {
-        clearInterval(this.intervalHandle);
+            BackgroundTimer.stopBackgroundTimer(this.intervalHandle);
         }
+        if (hr <= 0 && min <= 0 && sec <= 0){
+            BackgroundTimer.stopBackgroundTimer(this.intervalHandle)
+        }
+        else{
         this.secondsRemaining--
+        }
 }
 
 startCountDown = () => {
         if (this.state.on === false)
         {
            this.props.killCom(this.props.elem.id);
-           this.intervalHandle = setInterval(this.count, 1000);
+           BackgroundTimer.stopBackgroundTimer(this.intervalHandle);
+           this.intervalHandle = BackgroundTimer.runBackgroundTimer(this.count, 1000);
         }
     }
+
+componentWillUnmount = () => {
+    BackgroundTimer.stopBackgroundTimer(this.intervalHandle);
+    this.props.killCom();
+}
 
     render() {
         if (!this.props.admin)
@@ -73,13 +85,14 @@ startCountDown = () => {
                         {this.state.hours} : {this.state.minutes} : {this.state.seconds}
                         </Text>
                     </View>
-                    <Button buttonStyle = {styles.propsButtonStyle}
+                    <Button option = {this.state.on}
+                            buttonStyle = {styles.propsButtonStyle}
                             labelStyle = {styles.propsLabelStyle}
                             viewStyle = {styles.propsViewStyle}
                             onPress = {this.startCountDown}
                             label = "Start"
+                            labelfalse = ""
                     />
-                
                 </View>
             );
         }
