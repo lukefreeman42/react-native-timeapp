@@ -2,14 +2,14 @@ import React from 'react';
 import Button from '../common/Button';
 import Timer from './Timer/Timer'
 import Card from './../common/Card'
-import {View} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
 class ActivityList extends React.Component {
     render(){
         if (this.props.admin)
         {
             return (
-                <View style = {styles.viewStyle}>
+                <ScrollView style = {styles.viewStyle}>
                         {this.props.list.map((elem, key) => {
                             return (<Activity key = {key}
                                               elem = {elem}
@@ -19,13 +19,13 @@ class ActivityList extends React.Component {
                                     />
                                 );
                         })}
-                </View>
+                </ScrollView>
             );
         }
         else
         {
             return (
-                <View style = {styles.viewStyle3}>
+                <ScrollView style = {styles.viewStyle3}>
                         {this.props.list.map((elem, key) => {
                             return (<Activity key = {key}
                                               elem = {elem}
@@ -35,7 +35,7 @@ class ActivityList extends React.Component {
                                     />
                                 );
                         })}
-                </View>
+                </ScrollView>
             );
         }
     }
@@ -85,7 +85,7 @@ class Activity extends React.Component {
 const styles = {
     viewStyle: {
         flex: 20,
-        borderColor: "red",
+        borderColor: "black",
         borderWidth: 1,
         marginTop: 1,
         marginRight: 15,
@@ -100,7 +100,7 @@ const styles = {
     },
     viewStyle3: {
         flex: 20,
-        borderColor: "red",
+        //borderColor: "red",
         borderWidth: 1,
         marginTop: 1,
     },

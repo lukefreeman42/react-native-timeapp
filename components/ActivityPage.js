@@ -3,13 +3,17 @@ import Button from './common/Button';
 import ActivityForm from './ActivityForm';
 import ActivityList from './ActivityList/ActivityList';
 import Card from './common/Card';
-import {View} from 'react-native';
+import {View, AsyncStorage} from 'react-native';
 
 class ActivityPage extends React.Component{
     state =
     {
         list:[]
     };
+
+    componentDidMount = () => {
+        this.retrieveList();
+    }
 
     flipAdmin = () => {
             this.killCom();
@@ -35,12 +39,28 @@ class ActivityPage extends React.Component{
                 return elem;
         });
         this.setState({list : newList});
+        this.saveList(newList);
     }
 
     addAct = (elem) =>
     {
         const newList = this.state.list.concat(elem);
         this.setState({list: newList});
+        this.saveList(newList);
+    }
+
+    saveList = (state) => {
+        const data = JSON.stringify(state);
+        AsyncStorage.setItem('data', data);
+    }
+
+    retrieveList = async() => {
+            const data = await AsyncStorage.getItem('data');
+            const parsed = JSON.parse(data);
+            if(parsed.length > 0)
+            {
+                this.setState({list: parsed});
+            };
     }
 
     render(){
@@ -94,11 +114,11 @@ class ActivityPage extends React.Component{
 const styles = {
     viewStyle: {
         flex: 1,
-        //borderColor: "red",
+        //borderColor: "blue",
         //borderWidth: 2,
     },
     propsViewStyle:{
-        flex: 1,
+        flex: .05,
         //borderColor: "green",
         //borderWidth: 2,
         justifyContent: 'center',
