@@ -57,8 +57,9 @@ class Timer extends React.Component{
 }
 
 startCountDown = () => {
-        if (this.state.on === false)
+        if (this.props.elem.on === false)
         {
+           console.log(this.props.elem.id)
            this.props.killCom(this.props.elem.id);
            BackgroundTimer.stopBackgroundTimer(this.intervalHandle);
            this.intervalHandle = BackgroundTimer.runBackgroundTimer(this.count, 1000);
@@ -85,13 +86,13 @@ componentWillUnmount = () => {
                         {this.state.hours} : {this.state.minutes} : {this.state.seconds}
                         </Text>
                     </View>
-                    <Button option = {this.state.on}
+                    <Button option = {this.props.elem.on}
                             buttonStyle = {styles.propsButtonStyle}
                             labelStyle = {styles.propsLabelStyle}
                             viewStyle = {styles.propsViewStyle}
                             onPress = {this.startCountDown}
                             label = "Start"
-                            labelfalse = "Start"
+                            labelfalse = ""
                     />
                 </View>
             );
