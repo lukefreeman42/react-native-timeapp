@@ -24,12 +24,11 @@ class ActivityForm extends React.Component{
     }
 
     onFormSubmit = (event) => {
-        console.log(this.state)
         this.props.onSubmit(this.state);
         this.resetForm();
     }
 
-    onInputChange = (event) => {
+    setID = () => {
         this.setState({
             id: this.state.activity + this.state.hours + this.state.minutes
         });
@@ -44,7 +43,10 @@ class ActivityForm extends React.Component{
                             inputStyle = {styles.propsInputStyle} 
                             viewStyle = {styles.propsViewStyle}
                             placeholder = "activity"
-                            onChangeText = {(activity) => {this.setState({activity}); this.onInputChange();}}
+                            onChangeText = {(activity) => 
+                                {   this.setState({activity}); 
+                                    this.setID();
+                                }}
                             value = {this.state.activity}
                         />
                         <View style = {styles.propsViewStyle4}>
@@ -55,14 +57,20 @@ class ActivityForm extends React.Component{
                             inputStyle = {styles.propsInputStyle}
                             viewStyle = {styles.propsViewStyle}
                             placeholder = "hours"
-                            onChangeText = {(hours) => {this.setState({hours})}}
+                            onChangeText = {(hours) => 
+                                {   this.setState({hours});
+                                    this.setID();
+                                }}
                             value = {this.state.hours}
                         />
                         <Input 
                             inputStyle = {styles.propsInputStyle}
                             viewStyle = {styles.propsViewStyle}
                             placeholder = "minutes"
-                            onChangeText = {(minutes) => {this.setState({minutes})}}
+                            onChangeText = {(minutes) => 
+                                {   this.setState({minutes});
+                                    this.setID();   
+                                }}
                             value = {this.state.minutes}
                         />
                         </View>
@@ -71,8 +79,8 @@ class ActivityForm extends React.Component{
                                 viewStyle = {styles.propsViewStyle2} 
                                 buttonStyle = {styles.propsButtonStyle}
                                 onPress = {() => {
-                                                this.setState({id : "HELLO"});
-                                                this.onFormSubmit()}}
+                                                this.onFormSubmit();
+                                            }}
                                 label = "submit"
                         />
             </View>
