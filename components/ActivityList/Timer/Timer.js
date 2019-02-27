@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text} from 'react-native'
+import {Vibration, View, Text} from 'react-native'
 import BackgroundTimer from 'react-native-background-timer'
 import Button from '../../common/Button'
 
@@ -42,14 +42,16 @@ class Timer extends React.Component{
           hours: hr,
           minutes: min,
           seconds: sec,
-          on: this.props.elem.on
         })
         this.formatting(hr, min, sec);
-        if (!this.state.on) {
+        if (!this.props.elem.on) {
             BackgroundTimer.stopBackgroundTimer(this.intervalHandle);
         }
         if (hr <= 0 && min <= 0 && sec <= 0){
+            //Vibration.vibrate(500, true);
             BackgroundTimer.stopBackgroundTimer(this.intervalHandle)
+            //await sleep(2000);
+            //Vibration.cancel();
         }
         else{
         this.secondsRemaining--
@@ -59,7 +61,6 @@ class Timer extends React.Component{
 startCountDown = () => {
         if (this.props.elem.on === false)
         {
-           console.log(this.props.elem.id)
            this.props.killCom(this.props.elem.id);
            BackgroundTimer.stopBackgroundTimer(this.intervalHandle);
            this.intervalHandle = BackgroundTimer.runBackgroundTimer(this.count, 1000);

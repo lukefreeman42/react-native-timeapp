@@ -3,7 +3,7 @@ import Button from './common/Button';
 import ActivityForm from './ActivityForm';
 import ActivityList from './ActivityList/ActivityList';
 import Card from './common/Card';
-import {View, AsyncStorage} from 'react-native';
+import {Alert, View, AsyncStorage} from 'react-native';
 
 class ActivityPage extends React.Component{
     state =
@@ -13,6 +13,23 @@ class ActivityPage extends React.Component{
 
     componentDidMount = () => {
         this.retrieveList();
+    }
+
+    alertFlipAdmin = () => {
+        Alert.alert(
+            'Are you sure?',
+            'Current times will be lost',
+            [
+                {
+                    text: 'Cancel',
+                    style: 'cancel'
+                },
+                {
+                    text: 'I am Sure',
+                    onPress: () => this.flipAdmin()
+                }
+            ]
+        );
     }
 
     flipAdmin = () => {
@@ -82,7 +99,7 @@ class ActivityPage extends React.Component{
                             viewStyle = {styles.propsViewStyle}
                             buttonStyle = {styles.propsButtonStyle}
                             labelStyle = {styles.propsLabelStyle}
-                            onPress = {this.props.flipAdmin}
+                            onPress = {this.flipAdmin}
                             label = "Begin"
                     />
                 </View>
@@ -102,7 +119,7 @@ class ActivityPage extends React.Component{
                             viewStyle = {styles.propsViewStyle} 
                             buttonStyle = {styles.propsButtonStyle}
                             labelStyle = {styles.propsLabelStyle}
-                            onPress = {this.props.flipAdmin}
+                            onPress = {this.alertFlipAdmin}
                             label = "edit"
                     />
                 </View>
