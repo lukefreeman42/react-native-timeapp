@@ -91,7 +91,7 @@ componentWillUnmount = () => {
                             viewStyle = {styles.propsViewStyle}
                             onPress = {this.startCountDown}
                             label = "Start"
-                            labelfalse = ""
+                            labelfalse = "Start"
                     />
                 </View>
             );

@@ -34,6 +34,7 @@ class ActivityPage extends React.Component{
 
     delAct = (id) =>
     {
+        console.log(id);
         const newList = this.state.list.filter(elem =>{
             if (elem.id !== id)
                 return elem;
