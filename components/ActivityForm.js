@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Alert, View, Text} from 'react-native';
 import Input from './common/Input';
 import Button from './common/Button';
 import Card from './common/Card';
@@ -24,8 +24,54 @@ class ActivityForm extends React.Component{
     }
 
     onFormSubmit = (event) => {
-        this.props.onSubmit(this.state);
-        this.resetForm();
+        const hr = this.state.hours
+        const min = this.state.minutes
+        const act = this.state.activity
+
+        if (act.length <= 0)
+        {
+            Alert.alert(
+            'Error',
+            'Activity is required.')
+        }
+        else if (isNaN(hr))
+        {
+            Alert.alert(
+            'Error',
+            'Hours must be a number.')
+        }
+        else if (isNaN(min))
+        {
+            Alert.alert(
+            'Error',
+            'Minutes must be a number.')
+        }
+        else if (min == 0 && hr == 0)
+        {
+            Alert.alert(
+            'Error',
+            'Hours and Minutes are empty.'
+            )
+        }
+        else if (hr > 23)
+        {
+            Alert.alert(
+            'Error',
+            'Hours cannot be greater than 23'
+            )
+        }
+        else if (min > 59)
+        {
+            Alert.alert(
+            'Error',
+            'Minutes cannot be greater than 59'
+            )
+        }
+        else
+        {
+            this.props.onSubmit(this.state);
+            this.resetForm();
+        }
     }
 
     setID = () => {
