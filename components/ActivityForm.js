@@ -84,7 +84,7 @@ class ActivityForm extends React.Component{
         return(
             <View style = {styles.viewStyle}>
                         <Input
-                            label = "What do you spend your time on?"
+                            label = "How do you spend your time?"
                             labelStyle = {styles.propsLabelStyle}
                             inputStyle = {styles.propsInputStyle} 
                             viewStyle = {styles.propsViewStyle}
@@ -145,6 +145,8 @@ class ActivityForm extends React.Component{
 
 const styles = {
     viewStyle:{
+        alignItems: 'center',
+        justifyContent: 'center',
         flex: 1,
     },
     propsInputStyle: {
@@ -204,7 +206,7 @@ const styles = {
     propsLabelStyle2:{
         flex: 2,
         alignItems: 'center',
-        fontSize: 22,
+        fontSize: 23,
         fontWeight:'bold'
     },
     propsLabelStyle3:{
